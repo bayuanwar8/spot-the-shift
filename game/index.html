@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPOT THE SHIFT — 4 worlds, 28 differences</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="stage">
+  <header id="hud">
+    <div class="hud-left">
+      <div class="logo">SPOT THE SHIFT</div>
+      <div class="scene-info"><span id="hud-scene">Borobudur Sunrise</span><span id="hud-scene-num">Scene 2 of 4</span></div>
+    </div>
+    <div class="hud-mid">
+      <div id="hud-tofind">7 to find</div>
+      <div class="timer-wrap">
+        <div id="hud-timer-bar"></div>
+        <span id="hud-timer-text">2:00</span>
+      </div>
+    </div>
+    <div class="hud-right">
+      <div class="stat">Score <b id="hud-score">0</b></div>
+      <div class="stat"><b id="hud-streak">Streak x1</b></div>
+      <div class="stat">Strikes <b id="hud-strikes">—</b></div>
+      <button id="btn-hint" class="hud-btn gold"><span id="hud-hint-count">Hint (3)</span></button>
+      <button id="btn-pause" class="hud-btn">Pause</button>
+      <button id="btn-sound" class="hud-btn">Sound: On</button>
+    </div>
+  </header>
+
+  <div id="canvas-wrap">
+    <canvas id="game-canvas" width="1280" height="520"></canvas>
+
+    <div id="overlay-menu" class="overlay">
+      <h1>SPOT THE SHIFT</h1>
+      <p class="tagline">4 worlds, 28 differences. Two pictures look the same — but they are not.</p>
+      <p class="howto">Click a difference on <b>either</b> picture to ring it. Find all 7 before the timer runs out.
+        Wrong clicks cost 3 seconds. <b>H</b> hint · <b>P</b> pause · <b>R</b> restart · <b>M</b> sound · <b>1–4</b> scene · <b>Esc</b> menu.</p>
+      <div class="scene-grid">
+        <button class="scene-pick" data-scene="1"><b>1 · Coral Reef</b><span>Day · 90s · easy</span></button>
+        <button class="scene-pick" data-scene="2"><b>2 · Borobudur Sunrise</b><span>Morning · 120s</span></button>
+        <button class="scene-pick" data-scene="3"><b>3 · Night Market</b><span>Night · 120s</span></button>
+        <button class="scene-pick" data-scene="4"><b>4 · Snowy Cabin</b><span>Night · 150s · tricky</span></button>
+      </div>
+      <button id="btn-play" class="big-btn">▶ Play all 4 scenes</button>
+      <p id="menu-best" class="best">Best score: 0</p>
+    </div>
+
+    <div id="overlay-pause" class="overlay hidden">
+      <h2>Paused</h2>
+      <p>Take a breath. The differences are not going anywhere.</p>
+      <button id="btn-resume" class="big-btn">Resume</button>
+      <button id="btn-restart-pause" class="mid-btn">Restart scene</button>
+      <button id="btn-quit-pause" class="mid-btn">Back to menu</button>
+    </div>
+
+    <div id="overlay-complete" class="overlay hidden">
+      <h2 id="complete-title">Scene complete!</h2>
+      <p id="complete-found">All 7 differences found</p>
+      <p id="complete-score" class="score-line">Score 0</p>
+      <button id="btn-next" class="big-btn">Next Scene →</button>
+    </div>
+
+    <div id="overlay-final" class="overlay hidden">
+      <h2>🎉 You found them all!</h2>
+      <p>28 differences across 4 worlds. Sharp eyes!</p>
+      <p class="score-line">Final score: <b id="final-score">0</b></p>
+      <p id="final-best" class="best">Best: 0</p>
+      <button id="btn-again" class="big-btn">↻ Play Again</button>
+      <button id="btn-menu-final" class="mid-btn">Back to menu</button>
+    </div>
+
+    <div id="overlay-timeout" class="overlay hidden">
+      <h2>⏱ Time's up!</h2>
+      <p>The timer ran out on <b id="timeout-scene">this scene</b>. Your score so far is kept.</p>
+      <button id="btn-retry" class="big-btn">↻ Retry scene</button>
+      <button id="btn-menu-timeout" class="mid-btn">Back to menu</button>
+    </div>
+  </div>
+
+  <footer id="found-bar">
+    <div class="found-label">Found:</div>
+    <div id="found-list"></div>
+    <div id="found-dots"></div>
+    <div class="keys-hint">Click either picture · H hint · P pause · R restart · M sound · 1–4 scene</div>
+  </footer>
+</div>
+<script type="module" src="src/main.js"></script>
+<script type="module" src="src/shots.js"></script>
+</body>
+</html>

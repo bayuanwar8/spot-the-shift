@@ -1,0 +1,98 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: #0a0f1e;
+  color: #e8eaf2;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+#stage { width: 1280px; }
+#hud {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; height: 64px; padding: 0 20px;
+  background: #141c33; border-radius: 12px 12px 0 0;
+  border-bottom: 2px solid #ffd166;
+}
+.hud-left { display: flex; align-items: baseline; gap: 14px; }
+.logo { font-size: 22px; font-weight: 800; letter-spacing: 1px; color: #ffd166; }
+.scene-info { display: flex; flex-direction: column; line-height: 1.15; }
+#hud-scene { font-weight: 700; font-size: 15px; }
+#hud-scene-num { font-size: 12px; color: #8a97b5; }
+.hud-mid { display: flex; align-items: center; gap: 14px; }
+#hud-tofind { font-size: 26px; font-weight: 800; color: #ffd166; white-space: nowrap; }
+.timer-wrap {
+  position: relative; width: 180px; height: 26px;
+  background: #0a0f1e; border-radius: 13px; overflow: hidden;
+  border: 1px solid #2a3a5f;
+}
+#hud-timer-bar {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 100%;
+  background: linear-gradient(90deg, #06d6a0, #ffd166);
+  transition: width 0.3s linear;
+}
+#hud-timer-bar.urgent { background: linear-gradient(90deg, #ef476f, #ff8c42); }
+#hud-timer-text {
+  position: relative; z-index: 1; display: block; text-align: center;
+  line-height: 26px; font-weight: 700; font-size: 14px; color: #0a0f1e;
+}
+.hud-right { display: flex; align-items: center; gap: 10px; }
+.stat { font-size: 13px; color: #8a97b5; white-space: nowrap; }
+.stat b { color: #e8eaf2; font-size: 15px; }
+.hud-btn {
+  background: #24304f; color: #e8eaf2; border: 1px solid #3a4a6e;
+  border-radius: 8px; padding: 8px 12px; font-size: 13px; font-weight: 600;
+  cursor: pointer;
+}
+.hud-btn:hover { background: #2f3f66; }
+.hud-btn.gold { background: #ffd166; color: #0a0f1e; border-color: #ffd166; }
+.hud-btn.gold:hover { background: #ffe08a; }
+#canvas-wrap { position: relative; }
+#game-canvas { display: block; background: #0e1424; }
+.overlay {
+  position: absolute; inset: 0; z-index: 5;
+  background: rgba(10, 15, 30, 0.88);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; text-align: center; padding: 24px;
+}
+.overlay.hidden { display: none; }
+.overlay h1 { font-size: 44px; letter-spacing: 2px; color: #ffd166; }
+.overlay h2 { font-size: 32px; color: #ffd166; }
+.tagline { font-size: 17px; color: #c8d0e4; max-width: 640px; }
+.howto { font-size: 14px; color: #8a97b5; max-width: 660px; line-height: 1.5; }
+.scene-grid { display: flex; gap: 10px; }
+.scene-pick {
+  background: #1b2440; border: 1px solid #3a4a6e; border-radius: 10px;
+  color: #e8eaf2; padding: 12px 14px; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 3px; min-width: 150px;
+}
+.scene-pick:hover { border-color: #ffd166; background: #24304f; }
+.scene-pick b { font-size: 14px; }
+.scene-pick span { font-size: 12px; color: #8a97b5; }
+.big-btn {
+  background: #ffd166; color: #0a0f1e; border: none; border-radius: 10px;
+  padding: 13px 28px; font-size: 17px; font-weight: 800; cursor: pointer;
+}
+.big-btn:hover { background: #ffe08a; }
+.mid-btn {
+  background: #24304f; color: #e8eaf2; border: 1px solid #3a4a6e;
+  border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.mid-btn:hover { background: #2f3f66; }
+.best { color: #8a97b5; font-size: 14px; }
+.score-line { font-size: 19px; font-weight: 700; }
+#found-bar {
+  display: flex; align-items: center; gap: 12px; min-height: 64px;
+  background: #141c33; border-radius: 0 0 12px 12px; padding: 10px 20px;
+}
+.found-label { font-weight: 700; font-size: 14px; color: #ffd166; white-space: nowrap; }
+#found-list { display: flex; flex-wrap: wrap; gap: 6px 14px; flex: 1; }
+.found-item { font-size: 13px; color: #5a6b8a; white-space: nowrap; }
+.found-item.found { color: #06d6a0; font-weight: 600; }
+#found-dots { display: flex; gap: 6px; }
+.dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid #5a6b8a; display: inline-block;
+}
+.dot.on { background: #06d6a0; border-color: #06d6a0; }
+.keys-hint { font-size: 12px; color: #5a6b8a; white-space: nowrap; }
