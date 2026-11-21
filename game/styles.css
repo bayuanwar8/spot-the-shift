@@ -34,7 +34,10 @@ body {
 #hud-timer-bar.urgent { background: linear-gradient(90deg, #ef476f, #ff8c42); }
 #hud-timer-text {
   position: relative; z-index: 1; display: block; text-align: center;
-  line-height: 26px; font-weight: 700; font-size: 14px; color: #0a0f1e;
+  line-height: 26px; font-weight: 700; font-size: 14px; color: #ffffff;
+  /* White + dark shadow: stays readable on the bright fill AND on the
+     dark track when the bar is low (e.g. 0:48 = 32% fill). */
+  text-shadow: 0 1px 3px rgba(10, 15, 30, 0.9), 0 0 2px rgba(10, 15, 30, 0.9);
 }
 .hud-right { display: flex; align-items: center; gap: 10px; }
 .stat { font-size: 13px; color: #8a97b5; white-space: nowrap; }

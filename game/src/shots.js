@@ -40,6 +40,7 @@ if (shot) {
     } else if (shot === 'complete') {
       startScene(4);
       state.score = 1240;
+      timer.left = 48; // 0:48 — matches the +96 time bonus (48s x 2)
       timer.stop();
       for (const d of state.diffs) {
         state.found.add(d.id);
